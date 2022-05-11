@@ -96,7 +96,10 @@ def construct_feature_columns(input_features):
     Returns:
         A set of feature columns
     """
-    return set([tf.feature_column.numeric_column(my_feature) for my_feature in input_features])
+    return {
+        tf.feature_column.numeric_column(my_feature)
+        for my_feature in input_features
+    }
 
 
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):
